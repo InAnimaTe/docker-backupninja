@@ -3,7 +3,8 @@
 FROM dockerfile/supervisor
 
 RUN apt-get update && \
-    apt-get install backupninja apparmor debconf-utils duplicity genisoimage rdiff-backup subversion subversion-tools rsync trickle gzip bzip2 cron autofs -y && \
+    apt-get install backupninja debconf-utils duplicity genisoimage rdiff-backup subversion subversion-tools rsync trickle gzip bzip2 cron autofs -y && \
+    apt-get purge apparmor -y && \
     rm -rf /var/lib/apt/lists/*
 
 ## Add in our config files
