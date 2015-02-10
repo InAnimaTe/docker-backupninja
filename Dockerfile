@@ -3,7 +3,7 @@
 FROM dockerfile/supervisor
 
 RUN apt-get update && \
-    apt-get install debconf-utils duplicity genisoimage rdiff-backup subversion subversion-tools rsync trickle gzip bzip2 cron autofs -y && \
+    apt-get install debconf-utils duplicity genisoimage rdiff-backup subversion subversion-tools rsync trickle gzip bzip2 cron autofs dialog -y && \
     apt-get build-dep backupninja -y && \
     rm -rf /var/lib/apt/lists/*
 
