@@ -3,9 +3,12 @@
 FROM dockerfile/supervisor
 
 RUN apt-get update && \
-    apt-get install backupninja debconf-utils duplicity genisoimage rdiff-backup subversion subversion-tools rsync trickle gzip bzip2 cron autofs -y && \
-    apt-get purge apparmor -y && \
+    apt-get install debconf-utils duplicity genisoimage rdiff-backup subversion subversion-tools rsync trickle gzip bzip2 cron autofs -y && \
     rm -rf /var/lib/apt/lists/*
+
+## Installing backupninja from our custom built debian package
+ADD backupninja_1.0.1-2_4019-rsync-bug-fixed_all.deb /tmp/backupninja.deb
+RUN dpkg -i /tmp/backupninja.deb
 
 ## Add in our config files
 ADD backupninja.conf /etc/backupninja.conf
