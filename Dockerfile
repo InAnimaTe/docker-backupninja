@@ -14,7 +14,7 @@ ADD backupninja_1.0.1-2_4019-rsync-bug-fixed_all.deb /tmp/backupninja.deb
 RUN dpkg -i /tmp/backupninja.deb
 
 # Now we can install ssmtp, shouldn't be any incompatibilities with backupninja
-RUN apt-get install ssmtp -y
+RUN apt-get update && apt-get install ssmtp -y
 
 ## Add in our config files
 ADD backupninja.conf /etc/backupninja.conf
