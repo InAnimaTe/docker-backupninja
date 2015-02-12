@@ -3,7 +3,7 @@
 FROM dockerfile/supervisor
 
 RUN apt-get update && \
-    apt-get install debconf-utils duplicity genisoimage rdiff-backup rsync trickle gzip bzip2 cron dialog autofs -y && \
+    apt-get install debconf-utils duplicity genisoimage rdiff-backup rsync trickle gzip bzip2 cron dialog autofs ssmtp -y && \
     ## Here are defined extras depending on the sort of backups youll be having the ninjas run ;)
     apt-get install mysql-client subversion subversion-tools -y && \
     apt-get build-dep backupninja -y && \
