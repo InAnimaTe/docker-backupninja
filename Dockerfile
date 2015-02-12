@@ -5,13 +5,16 @@ FROM dockerfile/supervisor
 RUN apt-get update && \
     apt-get install debconf-utils duplicity genisoimage rdiff-backup rsync trickle gzip bzip2 cron dialog autofs -y && \
     ## Here are defined extras depending on the sort of backups youll be having the ninjas run ;)
-    apt-get install ssmtp mysql-client subversion subversion-tools -y && \
+    apt-get install mysql-client subversion subversion-tools -y && \
     apt-get build-dep backupninja -y && \
     rm -rf /var/lib/apt/lists/*
 
 ## Installing backupninja from our custom built debian package
 ADD backupninja_1.0.1-2_4019-rsync-bug-fixed_all.deb /tmp/backupninja.deb
 RUN dpkg -i /tmp/backupninja.deb
+
+# Now we can install ssmtp, shouldn't be any incompatibilities with backupninja
+RUN apt-get install ssmtp -y
 
 ## Add in our config files
 ADD backupninja.conf /etc/backupninja.conf
