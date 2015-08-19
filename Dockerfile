@@ -25,10 +25,6 @@ RUN rm -f /etc/cron.d/backupninja
 ## Adding in our server configs
 ADD backup.d /etc/backup.d
 
-## Add in our checkperms cron script to ensure permissions are up to par for backupninja
-ADD checkperms /etc/cron.d/checkperms
-RUN chmod 644 /etc/cron.d/checkperms
-
 ADD run.sh /run.sh
 
 CMD ["/run.sh"]
