@@ -26,6 +26,9 @@ ADD backup.d /etc/backup.d
 ADD checkperms /etc/cron.d/checkperms
 RUN chmod 644 /etc/cron.d/checkperms
 
+ADD run /run
+
+CMD ["/run"]
 
 ## [Optional] Add in our private key to use to connect to nodes
 #ADD id_rsa /root/.ssh/id_rsa
