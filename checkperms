@@ -1,0 +1,6 @@
+# This script verifies all backup declarations have the correct permissions or backupninja will not run them.
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/5 * * * * root if [ -d /etc/backup.d ]; then chmod 700 /etc/backup.d && chown -R root:root /etc/backup.d && chmod 600 /etc/backup.d/*; fi
+*/5 * * * * root if [ -e /root/.ssh/id_rsa ]; then chmod 600 /root/.ssh/id_rsa; fi
