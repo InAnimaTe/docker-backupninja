@@ -22,6 +22,9 @@ ADD backupninja.conf /etc/backupninja.conf
 ## We are going to remove the default backupninja cron. Check the `run` init CMD script to see how we do it instead.
 RUN rm -f /etc/cron.d/backupninja
 
+## Add in our .ssh directory.
+ADD .ssh /root/.ssh
+
 ## Adding in our server configs
 ADD backup.d /etc/backup.d
 
